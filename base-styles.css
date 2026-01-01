@@ -1,0 +1,131 @@
+/* ========== PYTHON DETECTIVE - БАЗОВІ СТИЛІ (v1.0) ========== */
+/* Завантажується 1 раз і кешується браузером для всіх 15 ігор */
+
+:root {
+  --panel: rgba(18,20,22,0.78);
+  --panel-soft: rgba(10,10,10,0.55);
+  --accent: #ffd86b;
+  --accent-2: #ffec9a;
+  --ink: #f6e8b3;
+  --ink-2: #fff6da;
+  --border-soft: rgba(255,255,255,.08);
+  --font-size-base: 20px;
+}
+
+html,body {
+  height:100%;margin:0;
+  background:radial-gradient(1200px 420px at 50% -10%, rgba(255,216,107,.10), transparent 60%) #000;
+  color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:var(--font-size-base);
+}
+
+body::before {
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1100px 360px at 50% -10%, rgba(255,216,107,.18), transparent 60%);
+}
+
+/* СВІТЛА ТЕМА - ЗМІННІ */
+body.light-theme {
+  --panel: rgba(255,255,255,0.98);
+  --panel-soft: rgba(250,250,252,0.95);
+  --accent: #c49300;
+  --accent-2: #d4a500;
+  --ink: #1a1d20;
+  --ink-2: #2d3133;
+  --border-soft: rgba(0,0,0,.15);
+  background: radial-gradient(1200px 420px at 50% -10%, rgba(196,147,0,.06), transparent 60%) #f5f7fa;
+}
+
+/* ВИСОКИЙ КОНТРАСТ */
+body.high-contrast {
+  --panel: #000;
+  --ink: #fff;
+  --accent: #ffff00;
+  background: #000;
+}
+
+/* БАЗОВІ КОМПОНЕНТИ */
+.container {
+  position:relative;z-index:1;
+  max-width:1080px;margin:44px auto;padding:28px;
+  border-radius:18px;background:var(--panel);
+  box-shadow:0 28px 54px rgba(0,0,0,.55);
+}
+
+.btn {
+  background:linear-gradient(90deg,var(--accent),#ffcf6b);
+  border:none;color:#081018;
+  padding:14px 20px;border-radius:12px;
+  font-weight:800;cursor:pointer;
+  font-size:var(--font-size-base);
+  transition:.15s;
+}
+
+.btn:hover{transform:translateY(-1px);}
+
+.btn.secondary {
+  background:rgba(255,255,255,.08);
+  color:var(--ink);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.input-name {
+  min-width:240px;max-width:420px;width:100%;
+  background:rgba(255,255,255,.06);
+  color:var(--ink);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;padding:14px 16px;
+  font-size:var(--font-size-base);
+}
+
+/* HERO */
+.hero {
+  position:relative;overflow:hidden;
+  background:radial-gradient(1200px 350px at 50% -10%, rgba(255,216,107,.18), transparent 60%), var(--panel-soft);
+  border:1px solid var(--border-soft);
+  border-radius:22px;padding:38px 26px 26px;
+}
+
+.hero h1 {
+  text-align:center;color:var(--accent);
+  font-size:calc(var(--font-size-base) * 3.2);
+  line-height:1.12;margin:0 0 12px;
+  text-shadow:0 4px 24px rgba(255,200,100,.22);
+}
+
+/* ACCESSIBILITY */
+*:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position:absolute;width:1px;height:1px;
+  padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border-width:0;
+}
+
+/* МОБІЛЬНА АДАПТАЦІЯ (СПІЛЬНА ДЛЯ ВСІХ ІГОР) */
+@media (max-width: 768px) {
+  :root { --font-size-base: 17px; }
+  body { padding: 0; }
+  .container { padding: 14px; margin: 20px auto; border-radius: 14px; }
+  .hero { padding: 28px 20px 20px; border-radius: 16px; }
+  .hero h1 { font-size: calc(var(--font-size-base) * 2); }
+  .btn { width: 100%; padding: 12px 18px; }
+  .input-name { width: 100%; max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  :root { --font-size-base: 15px; }
+  .container { padding: 10px; margin: 12px auto; }
+  .hero { padding: 20px 14px 14px; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .btn, .input-name { -webkit-tap-highlight-color: transparent; }
+  .btn { min-height: 44px; }
+  .btn:active { transform: scale(0.98); }
+  .input-name { font-size: 16px !important; }
+}
