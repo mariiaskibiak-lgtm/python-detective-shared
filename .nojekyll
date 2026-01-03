@@ -1,0 +1,5 @@
+# В кореневій папці репозиторію
+touch .nojekyll
+git add .nojekyll
+git commit -m "Add .nojekyll to fix MIME types"
+git push
